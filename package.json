@@ -1,0 +1,29 @@
+{
+  "name": "emotional-health-cohort3",
+  "version": "1.0.0",
+  "description": "Emtional Health project, following up with patch of students on their emotional health to be able to support them thru the bootcamp phase.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RBK-Projects-Team/emotional-health-cohort3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RBK-Projects-Team/emotional-health-cohort3/issues"
+  },
+  "homepage": "https://github.com/RBK-Projects-Team/emotional-health-cohort3#readme",
+  "dependencies": {
+    "ejs": "^3.0.2",
+    "express": "^4.17.1",
+    "google-spreadsheet": "^3.0.10",
+    "googleapis": "^39.2.0",
+    "gs": "0.0.2",
+    "nodemon": "^2.0.2",
+    "readline": "^1.3.0",
+    "request": "^2.88.2"
+  }
+}
