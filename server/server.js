@@ -3,9 +3,12 @@ const app = express();
 var path = require("path");
 var bodyParser = require("body-parser");
 var cors = require("cors");
+var mongoose = require("mongoose");
 const MongoClient = require("mongodb").MongoClient;
 const ourDB =
   "mongodb://ctn3-db:ctn3-db@ds026898.mlab.com:26898/emotional-db-ctn3";
+var users = require("./models/users.model");
+console.log(users.users);
 
 const port = process.env.port || 5000;
 
@@ -24,8 +27,15 @@ MongoClient.connect(ourDB, {
   useUnifiedTopology: true,
 }).then((client) => {
   console.log("Connected to Database");
-  const db = client.db("emotional-db-ctn3");
-  const students = db.collection("students");
+});
+var db = mongoose.connection;
+
+db.on("error", function () {
+  console.log("mongoose connection error");
+});
+
+db.once("open", function () {
+  console.log("mongoose connected successfully");
 });
 
 //posting data to database.
