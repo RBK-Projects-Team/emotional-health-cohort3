@@ -8,7 +8,9 @@ const MongoClient = require("mongodb").MongoClient;
 const ourDB =
   "mongodb://ctn3-db:ctn3-db@ds026898.mlab.com:26898/emotional-db-ctn3";
 var users = require("./models/users.model");
-console.log(users.users);
+let apiRoutes = require("./routes/api-routes");
+
+app.use("/api", apiRoutes);
 
 const port = process.env.port || 5000;
 
