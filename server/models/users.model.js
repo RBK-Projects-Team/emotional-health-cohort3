@@ -1,10 +1,22 @@
 var mongoose = require("mongoose");
-
+// Setup schema
 var usersSchema = mongoose.Schema({
-  userName: String,
-  password: String,
+  user_name: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+
+  create_date: {
+    type: Date,
+    default: Date.now,
+  },
 });
-
-var users = mongoose.model("users", usersSchema);
-
-module.exports.users = users;
+// Export Contact model
+var User = (module.exports = mongoose.model("user", usersSchema));
+module.exports.get = function (callback, limit) {
+  Contact.find(callback).limit(limit);
+};
