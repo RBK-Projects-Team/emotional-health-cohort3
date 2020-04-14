@@ -17,10 +17,10 @@ exports.index = function (req, res) {
   });
 };
 // Handle create users actions
-exports.new = function (req, res) {
-  var user = new User();
+exports.new = function async(req, res) {
   user.user_name = req.body.user_name ? req.body.user_name : user.user_name;
-  user.password = req.body.password;
+  request.body.password = Bcrypt.hashSync(request.body.password, 10);
+  var user = new User();
   // save the users and check for errors
   user.save(function (err) {
     // if (err)
