@@ -15,8 +15,8 @@ var usersSchema = mongoose.Schema(
       type: Date,
       default: Date.now,
     },
-  },
-  { timestamps: true }
+  }
+  // { timestamps: true }
 );
 // Export Contact model
 var User = (module.exports = mongoose.model("user", usersSchema));

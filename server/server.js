@@ -3,7 +3,9 @@ const app = express();
 const path = require("path");
 const cors = require("cors");
 const helmet = require("helmet");
-
+let mongoose = require("mongoose");
+const db = require("../mongo-database/index");
+const ourDB = require("../mongo-database/index");
 app.use(helmet());
 
 //importing routes
@@ -23,6 +25,10 @@ app.use(cors());
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + "/../clientTest/test.html"));
+});
+mongoose.connect(ourDB.ourDB, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
 //using route
