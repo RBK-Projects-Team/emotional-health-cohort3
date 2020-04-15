@@ -1,5 +1,8 @@
+// let db = require("../../mongo-database/index");
+
 // Initialize express router
 let router = require("express").Router();
+
 // Set default API response
 router.get("/", function (req, res) {
   res.json({
@@ -7,7 +10,8 @@ router.get("/", function (req, res) {
     message: "Welcome to RESTHub crafted with love!",
   });
 });
-// Import contact controller
+
+// Import user controller
 var userController = require("./userController");
 // user routes
 router.route("/users").get(userController.index).post(userController.new);

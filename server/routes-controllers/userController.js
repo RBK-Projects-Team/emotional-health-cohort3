@@ -1,21 +1,22 @@
 // Import users model
 User = require("../models/users.model");
 // Handle index actions
-exports.index = function (req, res) {
-  User.get(function (err, users) {
-    if (err) {
-      res.json({
-        status: "error",
-        message: err,
-      });
-    }
-    res.json({
-      status: "success",
-      message: "users retrieved successfully",
-      data: users,
-    });
-  });
-};
+// exports.index = function (req, res) {
+//   console.log(new Date());
+//   User.get(function (err, users) {
+//     if (err) {
+//       res.json({
+//         status: "error",
+//         message: err,
+//       });
+//     }
+//     res.json({
+//       status: "success",
+//       message: "users retrieved successfully",
+//       data: users,
+//     });
+//   });
+// };
 // Handle create users actions
 exports.new = function async(req, res) {
   user.user_name = req.body.user_name ? req.body.user_name : user.user_name;
