@@ -9,7 +9,7 @@ const ourDB = require("../mongo-database/index");
 app.use(helmet());
 
 //importing routes
-const apiRoutes = require("./routes");
+const apiRoutes = require("./routes/index");
 
 const port = process.env.port || 5000;
 

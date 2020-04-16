@@ -32,6 +32,7 @@ module.exports = {
   },
   viewUser(req, res, next) {
     User.findById(req.params.user_id, function (err, user) {
+      // console.log(req.params.user_id);
       if (err) res.send(err);
       res.json({
         message: "user details loading..",
