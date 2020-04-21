@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname + "/../clientTest/test.html"));
+  res.sendFile(path.join(__dirname + "/../clientTest/public/index.html"));
 });
 mongoose.connect(ourDB.ourDB, {
   useNewUrlParser: true,

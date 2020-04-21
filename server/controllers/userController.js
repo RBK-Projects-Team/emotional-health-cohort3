@@ -1,5 +1,6 @@
 const User = require("../models/users.model");
 const Bcrypt = require("bcryptjs");
+
 module.exports = {
   getUser(req, res, next) {
     User.get(function (err, users) {

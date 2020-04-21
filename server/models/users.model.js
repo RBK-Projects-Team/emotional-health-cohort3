@@ -4,17 +4,24 @@ var usersSchema = mongoose.Schema(
   {
     user_name: {
       type: String,
-      required: true,
+      required: true
+    },
+    full_name: {
+      type: String,
+      required: true
     },
     password: {
       type: String,
-      required: true,
+      required: true
     },
-
+    emotion: {
+      type: Number,
+      require:true
+    },
     create_date: {
       type: Date,
-      default: Date.now,
-    },
+      default: Date.now
+    }
   }
   // { timestamps: true }
 );
