@@ -1,8 +1,6 @@
 <template>
-  <div id="app">
-    <div id="nav" >
+  <div id="app" class="container home">
       <router-link v-if="!this.$store.state.user" to="/login">Login</router-link>
-    </div>
     <router-view/>
   </div>
 </template>
@@ -27,5 +25,8 @@
       color: #42b983;
     }
   }
+}
+.home{
+  padding-top: 10%;
 }
 </style>

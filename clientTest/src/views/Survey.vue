@@ -1,41 +1,33 @@
 <template>
   <div class="survey">
     <Welcome  />
-    <div >
-			<h3>How do you feel today?</h3>
-			<form @submit.prevent="send()">
+    <div class="container" >
+			<form @submit.prevent="surveySubmit()" @change="onChange($event)">
 				<!-- will make it rander from data -->
-				<div class="form-group  emogi">    
-					<div class="form-check ">
+				<div class="form-group ">    
+					<div class="form-check blockStyle">
 						<img src="../../public/img/1.jpg" width="200px" alt="">
 						<label class="form-check-label" for="1">
-						<input class="form-check-input" type="radio"  id="1" value="1" v-model="checked"/> 
-						1
-						</label>
+						<input class="form-check-input" type="radio"  id="1" v-bind:value="1" v-model="picked"/> 
+						1	</label>
 					</div>
-					<div class="form-check">
+					<div class="form-check blockStyle" >
 						<img src="../../public/img/2.jpg" width="200px" alt="">
 						<label class="form-check-label" for="2">
-						<input class="form-check-input" type="radio"  id="2" value="2" v-model="checked"/> 
+						<input class="form-check-input" type="radio"  id="2" v-bind:value="2" v-model="picked"/> 
 						2 </label>
 					</div>
-					<div class="form-check">
-						<img src="../../public/img/3.jpg" width="200px" alt="">
+					<div class="form-check blockStyle">
+						<img src="../../public/img/4.jpg" width="200px" alt="">
 						<label class="form-check-label" for="3">
-						<input class="form-check-input" type="radio"  id="3" value="3" v-model="checked"/> 
+						<input class="form-check-input" type="radio"  id="3" v-bind:value="3" v-model="picked"/> 
 						3 </label>
 					</div>
-					<div class="form-check">
-						<img src="../../public/img/4.jpg" width="200px" alt="">
-						<label class="form-check-label" for="4">
-						<input class="form-check-input" type="radio"  id="4" value="4" v-model="checked"/> 
-						4 </label>
-					</div>
-					<div class="form-check">
+					<div class="form-check blockStyle">
 						<img src="../../public/img/5.jpg" width="200px" alt="">
-						<label class="form-check-label" for="5">
-						<input class="form-check-input" type="radio"  id="5" value="5" v-model="checked"/> 
-						5 </label>
+						<label class="form-check-label" for="4">
+						<input class="form-check-input" type="radio"  id="4" v-bind:value="4" v-model="picked"/> 
+						4 </label>
 					</div>
 				</div>
 				<div class="form-group">
@@ -53,34 +45,34 @@ export default {
   components : {Welcome},
   data(){
       return {
-        checked:null,
-
+			picked:""
       }
   },
   methods:{
-		send(){
-			if(this.checked == null){
-				alert('check only one case');
-			}else
-				console.log("you check "+ this.checked.toString());
+		surveySubmit() {
       this.$store
-      .dispatch('loginSubmit', {
-        email: this.email,
-        password: this.password 
+      .dispatch('surveySubmit', {
+        token: "dfsdfdsfdsf",
+        emotion: this.picked
       })
       .then( () => {
-          this.$router.push({name:'SurveyRouter'})
+          //this.$router.push({name:'SurveyRouter'})
+          console.log('From Survey View : SurveySubmit() OK')
       })
-		},
+      .catch(err =>{
+        this.status = err.response.status
+      })
+    },
+		onChange(event) {
+			console.log(event.target.value)
+			this.picked = event.target.value;
+			console.log("Picked is now :"+this.picked)
+        },
 		logoutSubmit(){
-			console.log('logout')
-			this.$store.dispatch('logout')
-			// this.$router.push({name:'HomeRouter'})
-			// location.reload()
-
+          //this.$store.dispatch('logout')
+          //location.reload()
+				}
 		}
-    }
-
 }
 </script>
 
@@ -105,6 +97,11 @@ a {
 	padding:20px 15% 20px 15%
 }
 .survey{
-	padding-top: 10% 
+	padding-top: 5% 
+}
+.blockStyle{
+    display: inline-grid;
+    padding-right: 10%;
+    padding-top: 5%;
 }
 </style>

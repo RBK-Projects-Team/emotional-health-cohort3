@@ -6,12 +6,10 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    user: null,
-    isNewUser: true
+    user: null
   },
   mutations: {
     SET_USER_DATA (state, userData) {
-      state.user = userData
       localStorage.setItem('user', JSON.stringify(userData))
       Axios.defaults.headers.common['Authorization'] = `Bearer ${
         userData.token
@@ -22,13 +20,10 @@ export default new Vuex.Store({
     CLEAR_USER_DATA (){
       localStorage.removeItem('user')
       location.reload()
-    },
-    // Is New User
-    IS_NEW_USER (state, isNewUser) {
-    state.isNewUser = isNewUser
     }
   },
   actions: {
+    // Login Submit to backend
     loginSubmit({ commit}, credentilas) {
       return Axios
       .post('http://127.0.0.1:3000/login', credentilas)
@@ -36,14 +31,22 @@ export default new Vuex.Store({
         commit('SET_USER_DATA', data)
       })
       .catch(err => { this.status = err.response.status })
-    },
+    }, // Survey Submit to Backend
+    surveySubmit({ commit}, credentilas1) {
+      return Axios
+      .post('http://127.0.0.1:3000/submit', credentilas1)
+      .then(({data}) => {
+        commit('SET_USER_DATA', data)
+      })
+      .catch(err => { this.status = err.response.status })
+    }, // Logout Submit on fronten (Delete user Sessesion)
     logoutSubmit({commit}){
       commit('CLEAR_USER_DATA')
     }
-  },
-  getters:{
-    loggedIn(state){
-      return !!state.user
-    }
   }
+  // getters:{
+  //   loggedIn(state){
+  //     return !!state.user
+  //   }
+  // }
 })

@@ -1,6 +1,6 @@
 <template>
-  <div class="" v-if="!this.$store.state.user">
-      <h1>it's a Home test</h1>
+  <div  v-if="!this.$store.state.user">
+      <h1 class="title">You have to login at 11:30AM and at 03:30PM</h1>
   </div>
 </template>
 
@@ -28,8 +28,8 @@ li {
 a {
   color: #42b983;
 }
-.emogi{
-	display:flex;
-	padding:20px 15% 20px 15%
+.title{
+  padding-top: 5%;
 }
+
 </style>
